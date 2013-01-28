@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>Extending jQuery's slideToggle</title>
+</head>
+<body>
+<div id="wrap1" class="wrapper">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+<div id="wrap2" class="wrapper">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+<div id="wrap3" class="wrapper">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+<div id="wrap4" class="wrapper">
+    <div></div>
+    <div></div>
+</div>
+
+<button>toggle wrappers</button>
+
+
+
+<style>
+.wrapper{
+ 	position:relative;
+    width:200px;
+    height:50px;
+    border: #333 dotted 1px;
+    margin: 20px; 
+}
+
+.wrapper div{
+	position:absolute;
+    width:25px;
+    height:20px;
+    border:red solid 1px;
+    right: -15px;
+    top:0;
+    background-color:#f8eaea;
+}
+.wrapper div:nth-child(2){top: 23px;}
+.wrapper div:nth-child(3){top: 23px;right:100px;}
+
+p{
+	position:absolute;
+    top: 10px;
+    left: 230px;
+}
+</style>
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="slideToggleFadeOverlays.js"></script>
+<script>
+
+$(function(){
+    $('button').click(function(){
+     	//slideToggle with two arguments 
+     	$('#wrap1').slideToggle('fast',function(){
+     		console.log('done animating wrap 1');
+     	});
+     	
+        //slideToggle with a single argument (speed)
+     	$('#wrap2').slideToggle('slow');   
+     	
+        //slideToggle with a single argument (callback)
+     	$('#wrap3').slideToggle(function(){
+     		console.log('done anumating wrap 3');
+     	});   
+
+        //slideToggle with no argument
+     	$('#wrap4').slideToggle();   
+    });
+});
+</script>
+</body>
+</html>
